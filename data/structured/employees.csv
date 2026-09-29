@@ -1,0 +1,9 @@
+﻿entity_type,name,employee_id,title,department
+Person,张三,EMP001,产品经理,产品部
+Person,李四,EMP002,技术负责人,研发部
+Person,王五,EMP003,高级工程师,研发部
+Person,赵六,EMP004,前端工程师,研发部
+Person,陈七,EMP005,产品总监,产品部
+Person,周八,EMP006,运维负责人,运维部
+Person,孙九,EMP007,测试工程师,研发部
+Person,钱十,EMP008,架构师,研发部

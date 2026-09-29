@@ -1,0 +1,121 @@
+{
+  "items": [
+    {
+      "entity_type": "Product",
+      "name": "支付平台",
+      "version": "2.5",
+      "description": "统一支付网关，支持微信、支付宝、银行卡等多种支付方式",
+      "status": "released",
+      "owner": "王五"
+    },
+    {
+      "entity_type": "Product",
+      "name": "风控系统",
+      "version": "1.8",
+      "description": "实时交易风险检测与拦截系统",
+      "status": "released",
+      "owner": "李四"
+    },
+    {
+      "entity_type": "Product",
+      "name": "智能客服",
+      "version": "0.9",
+      "description": "基于大模型的智能客服系统，支持多轮对话",
+      "status": "development",
+      "owner": "赵六"
+    },
+    {
+      "entity_type": "System",
+      "name": "Jira",
+      "type": "saas",
+      "description": "项目管理与任务跟踪系统",
+      "url": "https://jira.company.com"
+    },
+    {
+      "entity_type": "System",
+      "name": "Confluence",
+      "type": "saas",
+      "description": "企业知识库与文档管理平台",
+      "url": "https://confluence.company.com"
+    },
+    {
+      "entity_type": "System",
+      "name": "GitLab",
+      "type": "internal",
+      "description": "代码托管与CI/CD平台",
+      "url": "https://gitlab.company.com"
+    },
+    {
+      "entity_type": "Process",
+      "name": "敏捷开发流程规范",
+      "category": "development",
+      "description": "定义Sprint周期、站会、评审会等敏捷开发实践",
+      "version": "2.1"
+    },
+    {
+      "entity_type": "Process",
+      "name": "代码审查流程",
+      "category": "compliance",
+      "description": "所有代码合并前必须经过至少一名高级工程师审查",
+      "version": "1.5"
+    },
+    {
+      "entity_type": "Process",
+      "name": "发布审批流程",
+      "category": "approval",
+      "description": "生产环境发布需经技术负责人和产品经理双重审批",
+      "version": "1.2"
+    }
+  ],
+  "relations": [
+    {
+      "relation_type": "depends_on",
+      "source": "支付平台",
+      "source_type": "Product",
+      "target": "风控系统",
+      "target_type": "Product"
+    },
+    {
+      "relation_type": "depends_on",
+      "source": "智能客服",
+      "source_type": "Product",
+      "target": "CRM系统",
+      "target_type": "Product"
+    },
+    {
+      "relation_type": "develops",
+      "source": "研发部",
+      "source_type": "Department",
+      "target": "支付平台",
+      "target_type": "Product"
+    },
+    {
+      "relation_type": "develops",
+      "source": "研发部",
+      "source_type": "Department",
+      "target": "风控系统",
+      "target_type": "Product"
+    },
+    {
+      "relation_type": "uses",
+      "source": "研发部",
+      "source_type": "Department",
+      "target": "GitLab",
+      "target_type": "System"
+    },
+    {
+      "relation_type": "uses",
+      "source": "产品部",
+      "source_type": "Department",
+      "target": "Jira",
+      "target_type": "System"
+    },
+    {
+      "relation_type": "uses",
+      "source": "产品部",
+      "source_type": "Department",
+      "target": "Confluence",
+      "target_type": "System"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+# LLM 配置文件示例
+# ================
+# 复制为 llm_config.yaml 并根据实际情况修改。
+#
+# 用法:
+#   python scripts/build_kb.py --mode auto --data data/ --llm-config llm_config.yaml
+#
+# 设计原则:
+#   1. 默认关闭 — 不传 --llm-config 时走纯规则模式
+#   2. 优先级链式降级 — priority 越小越优先，失败的 provider 自动跳过
+#   3. 密钥通过环境变量注入 — 不要硬编码 API key
+#
+# 步骤:
+#   1. 复制此文件: cp llm_config.yaml.example llm_config.yaml
+#   2. 设置环境变量: export OPENAI_API_KEY=sk-xxx
+#   3. 启用你想要的 provider（删除 # 注释）
+#   4. 运行构建脚本
+
+llm:
+  # Provider 列表 — 按 priority 排序，越小越优先
+  # 每个 provider 需要:
+  #   - name: 显示名称（仅用于日志）
+  #   - type: provider 类型（"openai" / "azure" / "mock" / "custom"）
+  #   - model: 模型名称
+  #   - api_key_env: API key 的环境变量名（不是密钥本身）
+  #   - priority: 优先级（越小越优先，默认 99）
+  #   - timeout: 超时秒数（默认 30）
+
+  providers:
+    # --- OpenAI（推荐）---
+    # 使用前执行: export OPENAI_API_KEY=sk-xxx
+    # - name: "OpenAI GPT-4o"
+    #   type: "openai"
+    #   model: "gpt-4o"
+    #   api_key_env: "OPENAI_API_KEY"
+    #   priority: 10
+    #   timeout: 30
+
+    # --- OpenAI 兼容接口（如本地部署的 Ollama / vLLM）---
+    # 使用前执行: export LOCAL_LLM_API_KEY=any-value
+    # - name: "Local LLM"
+    #   type: "openai"
+    #   model: "qwen2.5-72b"
+    #   api_key_env: "LOCAL_LLM_API_KEY"
+    #   api_base_env: "LOCAL_LLM_BASE_URL"
+    #   priority: 20
+    #   timeout: 60
+
+    # --- Azure OpenAI ---
+    # 使用前执行:
+    #   export AZURE_OPENAI_API_KEY=xxx
+    #   export AZURE_OPENAI_ENDPOINT=https://xxx.openai.azure.com/
+    # - name: "Azure GPT-4"
+    #   type: "azure"
+    #   model: "gpt-4"
+    #   api_key_env: "AZURE_OPENAI_API_KEY"
+    #   api_base_env: "AZURE_OPENAI_ENDPOINT"
+    #   priority: 30
+    #   timeout: 30
+
+    # --- Mock（测试用，始终返回空以触发规则降级）---
+    # 不需要任何配置，取消注释即可使用
+    - name: "Mock LLM"
+      type: "mock"
+      priority: 99
+      timeout: 5

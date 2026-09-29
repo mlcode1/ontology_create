@@ -1,0 +1,71 @@
+{
+  "items": [
+    {
+      "entity_type": "FAQ",
+      "question": "如何申请CRM系统的测试账号？",
+      "answer": "联系产品部张三（EMP001），提交工单至 Jira 系统，选择'CRM-账号申请'类型，填写用途说明，审批通过后自动开通测试账号。通常需要1-2个工作日。",
+      "category": "账号权限"
+    },
+    {
+      "entity_type": "FAQ",
+      "question": "CRM系统的API文档在哪里？",
+      "answer": "API文档发布在 Confluence 的'CRM系统API手册'空间，路径为：Confluence > 技术文档 > CRM系统 > API手册。当前最新版本为 v3.2，包含 REST API 和 GraphQL 两种接口。",
+      "category": "技术文档"
+    },
+    {
+      "entity_type": "FAQ",
+      "question": "支付平台支持哪些支付方式？",
+      "answer": "支付平台（v2.5）支持以下支付方式：微信支付（扫码/小程序/H5）、支付宝（扫码/生活号）、银联云闪付、银行卡快捷支付、Apple Pay。企业支付和跨境支付功能在规划中。",
+      "category": "产品功能"
+    },
+    {
+      "entity_type": "FAQ",
+      "question": "代码审查流程是怎样的？",
+      "answer": "所有代码合并到 main 分支前必须经过代码审查：1) 提交 Merge Request；2) 至少一名高级工程师审查并批准；3) 通过 CI 自动化测试；4) 审查通过后由提交者合并。详细流程见 Confluence《代码审查流程 v1.5》。",
+      "category": "开发规范"
+    },
+    {
+      "entity_type": "FAQ",
+      "question": "如何申请GitLab仓库权限？",
+      "answer": "在 GitLab 系统中，进入目标仓库 > Settings > Members，添加你的账号并选择权限级别（Reporter/Developer/Maintainer）。如果是新加入项目，需联系项目负责人审批。",
+      "category": "账号权限"
+    }
+  ],
+  "relations": [
+    {
+      "relation_type": "answers",
+      "source": "如何申请CRM系统的测试账号？",
+      "source_type": "FAQ",
+      "target": "CRM系统",
+      "target_type": "Product"
+    },
+    {
+      "relation_type": "answers",
+      "source": "CRM系统的API文档在哪里？",
+      "source_type": "FAQ",
+      "target": "CRM系统",
+      "target_type": "Product"
+    },
+    {
+      "relation_type": "answers",
+      "source": "支付平台支持哪些支付方式？",
+      "source_type": "FAQ",
+      "target": "支付平台",
+      "target_type": "Product"
+    },
+    {
+      "relation_type": "answers",
+      "source": "代码审查流程是怎样的？",
+      "source_type": "FAQ",
+      "target": "代码审查流程",
+      "target_type": "Process"
+    },
+    {
+      "relation_type": "answers",
+      "source": "如何申请GitLab仓库权限？",
+      "source_type": "FAQ",
+      "target": "GitLab",
+      "target_type": "System"
+    }
+  ]
+}

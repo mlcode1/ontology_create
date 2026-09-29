@@ -1,0 +1,275 @@
+{
+  "documents": {
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#1": "﻿entity_type:Document name:CRM系统技术设计文档 doc_type:spec source_file:crm_product.md summary:CRM系统v3.2的技术架构设计，包括数据库、缓存、消息队列等组件选型",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#2": "﻿entity_type:Document name:CRM系统API手册 doc_type:manual source_file:crm_product.md summary:CRM系统REST API和GraphQL接口文档",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#3": "﻿entity_type:Document name:组织架构说明 doc_type:policy source_file:organization.md summary:公司三级组织架构定义及各部门职责",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#4": "﻿entity_type:Document name:支付平台接入指南 doc_type:manual source_file:payment_integration.md summary:第三方支付渠道接入的技术指南和配置说明",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#5": "﻿entity_type:Document name:风控系统规则手册 doc_type:spec source_file:risk_control_rules.md summary:风控系统v1.8的规则引擎配置和阈值说明",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#1": "﻿entity_type:Person name:张三 employee_id:EMP001 title:产品经理 department:产品部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#2": "﻿entity_type:Person name:李四 employee_id:EMP002 title:技术负责人 department:研发部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#3": "﻿entity_type:Person name:王五 employee_id:EMP003 title:高级工程师 department:研发部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#4": "﻿entity_type:Person name:赵六 employee_id:EMP004 title:前端工程师 department:研发部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#5": "﻿entity_type:Person name:陈七 employee_id:EMP005 title:产品总监 department:产品部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#6": "﻿entity_type:Person name:周八 employee_id:EMP006 title:运维负责人 department:运维部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#7": "﻿entity_type:Person name:孙九 employee_id:EMP007 title:测试工程师 department:研发部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#8": "﻿entity_type:Person name:钱十 employee_id:EMP008 title:架构师 department:研发部",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#1": "{\"entity_type\": \"FAQ\", \"question\": \"如何申请CRM系统的测试账号？\", \"answer\": \"联系产品部张三（EMP001），提交工单至 Jira 系统，选择'CRM-账号申请'类型，填写用途说明，审批通过后自动开通测试账号。通常需要1-2个工作日。\", \"category\": \"账号权限\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#2": "{\"entity_type\": \"FAQ\", \"question\": \"CRM系统的API文档在哪里？\", \"answer\": \"API文档发布在 Confluence 的'CRM系统API手册'空间，路径为：Confluence > 技术文档 > CRM系统 > API手册。当前最新版本为 v3.2，包含 REST API 和 GraphQL 两种接口。\", \"category\": \"技术文档\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#3": "{\"entity_type\": \"FAQ\", \"question\": \"支付平台支持哪些支付方式？\", \"answer\": \"支付平台（v2.5）支持以下支付方式：微信支付（扫码/小程序/H5）、支付宝（扫码/生活号）、银联云闪付、银行卡快捷支付、Apple Pay。企业支付和跨境支付功能在规划中。\", \"category\": \"产品功能\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#4": "{\"entity_type\": \"FAQ\", \"question\": \"代码审查流程是怎样的？\", \"answer\": \"所有代码合并到 main 分支前必须经过代码审查：1) 提交 Merge Request；2) 至少一名高级工程师审查并批准；3) 通过 CI 自动化测试；4) 审查通过后由提交者合并。详细流程见 Confluence《代码审查流程 v1.5》。\", \"category\": \"开发规范\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#5": "{\"entity_type\": \"FAQ\", \"question\": \"如何申请GitLab仓库权限？\", \"answer\": \"在 GitLab 系统中，进入目标仓库 > Settings > Members，添加你的账号并选择权限级别（Reporter/Developer/Maintainer）。如果是新加入项目，需联系项目负责人审批。\", \"category\": \"账号权限\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#1": "{\"entity_type\": \"Product\", \"name\": \"支付平台\", \"version\": \"2.5\", \"description\": \"统一支付网关，支持微信、支付宝、银行卡等多种支付方式\", \"status\": \"released\", \"owner\": \"王五\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#2": "{\"entity_type\": \"Product\", \"name\": \"风控系统\", \"version\": \"1.8\", \"description\": \"实时交易风险检测与拦截系统\", \"status\": \"released\", \"owner\": \"李四\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#3": "{\"entity_type\": \"Product\", \"name\": \"智能客服\", \"version\": \"0.9\", \"description\": \"基于大模型的智能客服系统，支持多轮对话\", \"status\": \"development\", \"owner\": \"赵六\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#4": "{\"entity_type\": \"System\", \"name\": \"Jira\", \"type\": \"saas\", \"description\": \"项目管理与任务跟踪系统\", \"url\": \"https://jira.company.com\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#5": "{\"entity_type\": \"System\", \"name\": \"Confluence\", \"type\": \"saas\", \"description\": \"企业知识库与文档管理平台\", \"url\": \"https://confluence.company.com\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#6": "{\"entity_type\": \"System\", \"name\": \"GitLab\", \"type\": \"internal\", \"description\": \"代码托管与CI/CD平台\", \"url\": \"https://gitlab.company.com\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#7": "{\"entity_type\": \"Process\", \"name\": \"敏捷开发流程规范\", \"category\": \"development\", \"description\": \"定义Sprint周期、站会、评审会等敏捷开发实践\", \"version\": \"2.1\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#8": "{\"entity_type\": \"Process\", \"name\": \"代码审查流程\", \"category\": \"compliance\", \"description\": \"所有代码合并前必须经过至少一名高级工程师审查\", \"version\": \"1.5\"}",
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#9": "{\"entity_type\": \"Process\", \"name\": \"发布审批流程\", \"category\": \"approval\", \"description\": \"生产环境发布需经技术负责人和产品经理双重审批\", \"version\": \"1.2\"}",
+    "data/documents/crm_product.md": "# CRM 系统产品文档\n\n## 产品概述\n\nCRM系统（Customer Relationship Management）是公司核心业务系统之一，当前版本为 v3.2，状态为已发布。该系统由产品部负责规划，由研发部负责开发和维护。\n\n## 技术架构\n\nCRM系统依赖于以下基础设施：\n- 数据库：MySQL 8.0 集群\n- 缓存：Redis 6.x\n- 消息队列：Kafka\n- 容器编排：Kubernetes\n\n## 团队成员\n\n| 姓名 | 工号 | 职位 | 部门 |\n|------|------|------|------|\n| 张三 | EMP001 | 产品经理 | 产品部 |\n| 李四 | EMP002 | 技术负责人 | 研发部 |\n| 王五 | EMP003 | 高级工程师 | 研发部 |\n| 赵六 | EMP004 | 前端工程师 | 研发部 |\n\n## 相关流程\n\nCRM系统的开发遵循《敏捷开发流程规范》（v2.1），上线前需经过《代码审查流程》和《发布审批流程》。\n\n## 常见问题\n\n**Q: CRM系统如何申请测试账号？**\nA: 联系产品部张三，提交工单至 Jira 系统，审批通过后自动开通。\n\n**Q: CRM系统的API文档在哪里？**\nA: 文档发布在 Confluence 的\"CRM系统API手册\"页面，最新版本为 v3.2。\n\n**Q: CRM系统依赖哪些外部服务？**\nA: 依赖统一认证中心（SSO）、短信网关、邮件服务三个外部系统。\n",
+    "data/documents/organization.md": "# 组织架构与人员管理\n\n## 公司组织架构\n\n公司采用三级组织架构：\n- L1: 技术中心（CTO 负责）\n- L2: 研发部、产品部、运维部\n- L3: 各组/团队\n\n## 部门详情\n\n### 产品部\n- 负责人：陈七（EMP005）\n- 上级部门：技术中心\n- 职责：产品规划、需求分析、用户研究\n\n### 研发部\n- 负责人：李四（EMP002）\n- 上级部门：技术中心\n- 职责：系统开发、技术架构、代码质量\n\n### 运维部\n- 负责人：周八（EMP006）\n- 上级部门：技术中心\n- 职责：系统运维、监控告警、故障处理\n\n## 使用的系统工具\n\n各部门共同使用以下系统：\n- Jira：项目管理与任务跟踪\n- Confluence：知识库与文档管理\n- GitLab：代码托管与CI/CD\n- 飞书：即时通讯与会议\n"
+  },
+  "metadata": {
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#1": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#2": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#3": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#4": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#5": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#1": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#2": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#3": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#4": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#5": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#6": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#7": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#8": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
+      "type": "csv"
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#1": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json",
+      "type": "json",
+      "data": {
+        "entity_type": "FAQ",
+        "question": "如何申请CRM系统的测试账号？",
+        "answer": "联系产品部张三（EMP001），提交工单至 Jira 系统，选择'CRM-账号申请'类型，填写用途说明，审批通过后自动开通测试账号。通常需要1-2个工作日。",
+        "category": "账号权限"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#2": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json",
+      "type": "json",
+      "data": {
+        "entity_type": "FAQ",
+        "question": "CRM系统的API文档在哪里？",
+        "answer": "API文档发布在 Confluence 的'CRM系统API手册'空间，路径为：Confluence > 技术文档 > CRM系统 > API手册。当前最新版本为 v3.2，包含 REST API 和 GraphQL 两种接口。",
+        "category": "技术文档"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#3": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json",
+      "type": "json",
+      "data": {
+        "entity_type": "FAQ",
+        "question": "支付平台支持哪些支付方式？",
+        "answer": "支付平台（v2.5）支持以下支付方式：微信支付（扫码/小程序/H5）、支付宝（扫码/生活号）、银联云闪付、银行卡快捷支付、Apple Pay。企业支付和跨境支付功能在规划中。",
+        "category": "产品功能"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#4": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json",
+      "type": "json",
+      "data": {
+        "entity_type": "FAQ",
+        "question": "代码审查流程是怎样的？",
+        "answer": "所有代码合并到 main 分支前必须经过代码审查：1) 提交 Merge Request；2) 至少一名高级工程师审查并批准；3) 通过 CI 自动化测试；4) 审查通过后由提交者合并。详细流程见 Confluence《代码审查流程 v1.5》。",
+        "category": "开发规范"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#5": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json",
+      "type": "json",
+      "data": {
+        "entity_type": "FAQ",
+        "question": "如何申请GitLab仓库权限？",
+        "answer": "在 GitLab 系统中，进入目标仓库 > Settings > Members，添加你的账号并选择权限级别（Reporter/Developer/Maintainer）。如果是新加入项目，需联系项目负责人审批。",
+        "category": "账号权限"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#1": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "Product",
+        "name": "支付平台",
+        "version": "2.5",
+        "description": "统一支付网关，支持微信、支付宝、银行卡等多种支付方式",
+        "status": "released",
+        "owner": "王五"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#2": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "Product",
+        "name": "风控系统",
+        "version": "1.8",
+        "description": "实时交易风险检测与拦截系统",
+        "status": "released",
+        "owner": "李四"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#3": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "Product",
+        "name": "智能客服",
+        "version": "0.9",
+        "description": "基于大模型的智能客服系统，支持多轮对话",
+        "status": "development",
+        "owner": "赵六"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#4": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "System",
+        "name": "Jira",
+        "type": "saas",
+        "description": "项目管理与任务跟踪系统",
+        "url": "https://jira.company.com"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#5": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "System",
+        "name": "Confluence",
+        "type": "saas",
+        "description": "企业知识库与文档管理平台",
+        "url": "https://confluence.company.com"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#6": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "System",
+        "name": "GitLab",
+        "type": "internal",
+        "description": "代码托管与CI/CD平台",
+        "url": "https://gitlab.company.com"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#7": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "Process",
+        "name": "敏捷开发流程规范",
+        "category": "development",
+        "description": "定义Sprint周期、站会、评审会等敏捷开发实践",
+        "version": "2.1"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#8": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "Process",
+        "name": "代码审查流程",
+        "category": "compliance",
+        "description": "所有代码合并前必须经过至少一名高级工程师审查",
+        "version": "1.5"
+      }
+    },
+    "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json#9": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/products_and_systems.json",
+      "type": "json",
+      "data": {
+        "entity_type": "Process",
+        "name": "发布审批流程",
+        "category": "approval",
+        "description": "生产环境发布需经技术负责人和产品经理双重审批",
+        "version": "1.2"
+      }
+    },
+    "data/documents/crm_product.md": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/documents/crm_product.md",
+      "type": "markdown",
+      "entities": [
+        "CRM 系统产品文档",
+        "产品概述",
+        "技术架构",
+        "团队成员",
+        "相关流程",
+        "常见问题",
+        "该系统由产品部",
+        "规划",
+        "研发部",
+        "于以下基础设施",
+        "遵循",
+        "哪些外部服务"
+      ]
+    },
+    "data/documents/organization.md": {
+      "file": "/Users/marin/PycharmProjects/ontology_skill/data/documents/organization.md",
+      "type": "markdown",
+      "entities": [
+        "组织架构与人员管理",
+        "公司组织架构",
+        "部门详情",
+        "产品部",
+        "研发部",
+        "运维部",
+        "使用的系统工具",
+        "三级组织架构",
+        "各部门共同",
+        "下系统",
+        "项目",
+        "与任务跟踪"
+      ]
+    }
+  }
+}

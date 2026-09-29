@@ -1,0 +1,6 @@
+﻿entity_type,name,doc_type,source_file,summary
+Document,CRM系统技术设计文档,spec,crm_product.md,CRM系统v3.2的技术架构设计，包括数据库、缓存、消息队列等组件选型
+Document,CRM系统API手册,manual,crm_product.md,CRM系统REST API和GraphQL接口文档
+Document,组织架构说明,policy,organization.md,公司三级组织架构定义及各部门职责
+Document,支付平台接入指南,manual,payment_integration.md,第三方支付渠道接入的技术指南和配置说明
+Document,风控系统规则手册,spec,risk_control_rules.md,风控系统v1.8的规则引擎配置和阈值说明

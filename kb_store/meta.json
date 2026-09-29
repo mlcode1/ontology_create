@@ -1,0 +1,22 @@
+{
+  "test": true,
+  "stats": {
+    "total_entities": 47,
+    "total_relations": 10,
+    "entity_type_counts": {
+      "Document": 26,
+      "FAQ": 1,
+      "Product": 9,
+      "System": 4,
+      "Process": 3,
+      "Department": 3,
+      "Person": 1
+    },
+    "relation_type_counts": {
+      "depends_on": 3,
+      "develops": 2,
+      "manages": 3,
+      "uses": 2
+    }
+  }
+}

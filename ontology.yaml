@@ -1,0 +1,162 @@
+# ============================================================
+# 企业知识本体定义 (Enterprise Knowledge Ontology)
+# ============================================================
+# 本体是知识库的"骨架"，定义了：
+#   1. 实体类型 — 知识库中存在哪些种类的"事物"
+#   2. 关系类型 — 实体之间可以有哪些关联
+#   3. 属性约束 — 每类实体有哪些属性、类型是什么
+# 查询时，引擎会利用本体约束来消除歧义、提升准确率。
+# ============================================================
+
+# ---- 实体类型定义 ----
+entity_types:
+
+  Product:
+    description: "产品或产品线"
+    attributes:
+      name: { type: string, required: true, unique: true }
+      version: { type: string, required: false }
+      description: { type: string, required: false }
+      status: { type: enum, values: [planning, development, released, deprecated], required: false }
+      owner: { type: string, required: false }
+
+  Department:
+    description: "部门或团队"
+    attributes:
+      name: { type: string, required: true, unique: true }
+      level: { type: enum, values: [L1, L2, L3], required: false }
+      parent: { type: string, required: false }
+      head: { type: string, required: false }
+
+  Person:
+    description: "人员"
+    attributes:
+      name: { type: string, required: true }
+      employee_id: { type: string, required: false, unique: true }
+      title: { type: string, required: false }
+      department: { type: string, required: false }
+
+  Process:
+    description: "业务流程或制度"
+    attributes:
+      name: { type: string, required: true, unique: true }
+      category: { type: enum, values: [approval, operation, compliance, development], required: false }
+      description: { type: string, required: false }
+      version: { type: string, required: false }
+
+  Document:
+    description: "文档或知识条目"
+    attributes:
+      title: { type: string, required: true }
+      doc_type: { type: enum, values: [spec, manual, faq, policy, report], required: false }
+      source_file: { type: string, required: false }
+      content: { type: text, required: true }
+      summary: { type: string, required: false }
+
+  FAQ:
+    description: "常见问题条目"
+    attributes:
+      question: { type: string, required: true }
+      answer: { type: text, required: true }
+      category: { type: string, required: false }
+
+  System:
+    description: "IT系统或工具平台"
+    attributes:
+      name: { type: string, required: true, unique: true }
+      type: { type: enum, values: [internal, external, saas], required: false }
+      description: { type: string, required: false }
+      url: { type: string, required: false }
+
+# ---- 关系类型定义 ----
+relation_types:
+
+  manages:
+    description: "管理/负责"
+    domain: Person
+    range: Product
+    inverse: managed_by
+
+  managed_by:
+    description: "被管理"
+    domain: Product
+    range: Person
+    inverse: manages
+
+  belongs_to:
+    description: "隶属于"
+    domain: [Person, Department]
+    range: Department
+    inverse: contains
+
+  contains:
+    description: "包含"
+    domain: Department
+    range: [Person, Department]
+    inverse: belongs_to
+
+  develops:
+    description: "开发/维护"
+    domain: [Department, Person]
+    range: Product
+    inverse: developed_by
+
+  developed_by:
+    description: "由...开发"
+    domain: Product
+    range: [Department, Person]
+    inverse: develops
+
+  depends_on:
+    description: "依赖于"
+    domain: [Product, System]
+    range: [Product, System]
+    inverse: depended_by
+
+  depended_by:
+    description: "被依赖"
+    domain: [Product, System]
+    range: [Product, System]
+    inverse: depends_on
+
+  documented_in:
+    description: "记录于"
+    domain: [Product, Process, System]
+    range: Document
+    inverse: documents
+
+  documents:
+    description: "描述了"
+    domain: Document
+    range: [Product, Process, System]
+    inverse: documented_in
+
+  answers:
+    description: "解答"
+    domain: FAQ
+    range: [Product, Process, System]
+    inverse: answered_by
+
+  answered_by:
+    description: "被解答于"
+    domain: [Product, Process, System]
+    range: FAQ
+    inverse: answers
+
+  uses:
+    description: "使用"
+    domain: [Department, Person, Process]
+    range: [System, Product]
+    inverse: used_by
+
+  used_by:
+    description: "被使用"
+    domain: [System, Product]
+    range: [Department, Person, Process]
+    inverse: uses
+
+  related_to:
+    description: "相关"
+    domain: any
+    range: any
+    inverse: related_to
