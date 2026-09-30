@@ -1,149 +1,6 @@
 {
   "entities": [
     {
-      "eid": "4a390510d6951bcd",
-      "entity_type": "Document",
-      "name": "CRM系统技术设计文档",
-      "attributes": {
-        "﻿entity_type": "Document",
-        "doc_type": "spec",
-        "source_file": "crm_product.md",
-        "summary": "CRM系统v3.2的技术架构设计，包括数据库、缓存、消息队列等组件选型"
-      }
-    },
-    {
-      "eid": "83bf8b950ae8321e",
-      "entity_type": "Document",
-      "name": "CRM系统API手册",
-      "attributes": {
-        "﻿entity_type": "Document",
-        "doc_type": "manual",
-        "source_file": "crm_product.md",
-        "summary": "CRM系统REST API和GraphQL接口文档"
-      }
-    },
-    {
-      "eid": "8b0106d0314c9855",
-      "entity_type": "Document",
-      "name": "组织架构说明",
-      "attributes": {
-        "﻿entity_type": "Document",
-        "doc_type": "policy",
-        "source_file": "organization.md",
-        "summary": "公司三级组织架构定义及各部门职责"
-      }
-    },
-    {
-      "eid": "863f6cc61cb495c4",
-      "entity_type": "Document",
-      "name": "支付平台接入指南",
-      "attributes": {
-        "﻿entity_type": "Document",
-        "doc_type": "manual",
-        "source_file": "payment_integration.md",
-        "summary": "第三方支付渠道接入的技术指南和配置说明"
-      }
-    },
-    {
-      "eid": "5957b8b2cba5d4d2",
-      "entity_type": "Document",
-      "name": "风控系统规则手册",
-      "attributes": {
-        "﻿entity_type": "Document",
-        "doc_type": "spec",
-        "source_file": "risk_control_rules.md",
-        "summary": "风控系统v1.8的规则引擎配置和阈值说明"
-      }
-    },
-    {
-      "eid": "62245d9d22bbe135",
-      "entity_type": "Document",
-      "name": "张三",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP001",
-        "title": "产品经理",
-        "department": "产品部"
-      }
-    },
-    {
-      "eid": "14dc01beacaf5fdd",
-      "entity_type": "Document",
-      "name": "李四",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP002",
-        "title": "技术负责人",
-        "department": "研发部"
-      }
-    },
-    {
-      "eid": "752eb755155902d2",
-      "entity_type": "Document",
-      "name": "王五",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP003",
-        "title": "高级工程师",
-        "department": "研发部"
-      }
-    },
-    {
-      "eid": "837cbe2890e21bf1",
-      "entity_type": "Document",
-      "name": "赵六",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP004",
-        "title": "前端工程师",
-        "department": "研发部"
-      }
-    },
-    {
-      "eid": "554a0f6d9965f75c",
-      "entity_type": "Document",
-      "name": "陈七",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP005",
-        "title": "产品总监",
-        "department": "产品部"
-      }
-    },
-    {
-      "eid": "b1bc81a55e9266a2",
-      "entity_type": "Document",
-      "name": "周八",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP006",
-        "title": "运维负责人",
-        "department": "运维部"
-      }
-    },
-    {
-      "eid": "caea54459f40c362",
-      "entity_type": "Document",
-      "name": "孙九",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP007",
-        "title": "测试工程师",
-        "department": "研发部"
-      }
-    },
-    {
-      "eid": "320c57848851da45",
-      "entity_type": "Document",
-      "name": "钱十",
-      "attributes": {
-        "﻿entity_type": "Person",
-        "employee_id": "EMP008",
-        "title": "架构师",
-        "department": "研发部"
-      }
-    },
-    {
       "eid": "3860d76690516d2a",
       "entity_type": "FAQ",
       "name": "unknown",
@@ -331,6 +188,12 @@
       "attributes": {}
     },
     {
+      "eid": "12683326887683de",
+      "entity_type": "Product",
+      "name": "CRM系统",
+      "attributes": {}
+    },
+    {
       "eid": "d236d111e8dc3152",
       "entity_type": "Product",
       "name": "于以下基础设施",
@@ -340,6 +203,18 @@
       "eid": "278a82e67e2d1890",
       "entity_type": "Product",
       "name": "遵循",
+      "attributes": {}
+    },
+    {
+      "eid": "15fcec7fe3eb9bb3",
+      "entity_type": "Entity",
+      "name": "哪里",
+      "attributes": {}
+    },
+    {
+      "eid": "770ac812505ce2a7",
+      "entity_type": "Department",
+      "name": "文档发布",
       "attributes": {}
     },
     {
@@ -459,24 +334,6 @@
   "relations": [
     {
       "relation_type": "depends_on",
-      "source_eid": "83bf8b950ae8321e",
-      "target_eid": "d236d111e8dc3152",
-      "attributes": {}
-    },
-    {
-      "relation_type": "develops",
-      "source_eid": "83bf8b950ae8321e",
-      "target_eid": "278a82e67e2d1890",
-      "attributes": {}
-    },
-    {
-      "relation_type": "depends_on",
-      "source_eid": "83bf8b950ae8321e",
-      "target_eid": "e187dbf97ebbe08d",
-      "attributes": {}
-    },
-    {
-      "relation_type": "depends_on",
       "source_eid": "8e62b356929bb286",
       "target_eid": "3d3e5b2274e1fe16",
       "attributes": {}
@@ -497,6 +354,36 @@
       "relation_type": "develops",
       "source_eid": "f3c826a15a10df8c",
       "target_eid": "e170253d372283aa",
+      "attributes": {}
+    },
+    {
+      "relation_type": "depends_on",
+      "source_eid": "12683326887683de",
+      "target_eid": "d236d111e8dc3152",
+      "attributes": {}
+    },
+    {
+      "relation_type": "develops",
+      "source_eid": "12683326887683de",
+      "target_eid": "278a82e67e2d1890",
+      "attributes": {}
+    },
+    {
+      "relation_type": "located_in",
+      "source_eid": "12683326887683de",
+      "target_eid": "15fcec7fe3eb9bb3",
+      "attributes": {}
+    },
+    {
+      "relation_type": "depends_on",
+      "source_eid": "12683326887683de",
+      "target_eid": "e187dbf97ebbe08d",
+      "attributes": {}
+    },
+    {
+      "relation_type": "located_in",
+      "source_eid": "770ac812505ce2a7",
+      "target_eid": "d1833f7933be9d26",
       "attributes": {}
     },
     {

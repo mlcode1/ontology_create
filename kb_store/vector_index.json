@@ -1,18 +1,5 @@
 {
   "documents": {
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#1": "﻿entity_type:Document name:CRM系统技术设计文档 doc_type:spec source_file:crm_product.md summary:CRM系统v3.2的技术架构设计，包括数据库、缓存、消息队列等组件选型",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#2": "﻿entity_type:Document name:CRM系统API手册 doc_type:manual source_file:crm_product.md summary:CRM系统REST API和GraphQL接口文档",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#3": "﻿entity_type:Document name:组织架构说明 doc_type:policy source_file:organization.md summary:公司三级组织架构定义及各部门职责",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#4": "﻿entity_type:Document name:支付平台接入指南 doc_type:manual source_file:payment_integration.md summary:第三方支付渠道接入的技术指南和配置说明",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#5": "﻿entity_type:Document name:风控系统规则手册 doc_type:spec source_file:risk_control_rules.md summary:风控系统v1.8的规则引擎配置和阈值说明",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#1": "﻿entity_type:Person name:张三 employee_id:EMP001 title:产品经理 department:产品部",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#2": "﻿entity_type:Person name:李四 employee_id:EMP002 title:技术负责人 department:研发部",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#3": "﻿entity_type:Person name:王五 employee_id:EMP003 title:高级工程师 department:研发部",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#4": "﻿entity_type:Person name:赵六 employee_id:EMP004 title:前端工程师 department:研发部",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#5": "﻿entity_type:Person name:陈七 employee_id:EMP005 title:产品总监 department:产品部",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#6": "﻿entity_type:Person name:周八 employee_id:EMP006 title:运维负责人 department:运维部",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#7": "﻿entity_type:Person name:孙九 employee_id:EMP007 title:测试工程师 department:研发部",
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#8": "﻿entity_type:Person name:钱十 employee_id:EMP008 title:架构师 department:研发部",
     "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#1": "{\"entity_type\": \"FAQ\", \"question\": \"如何申请CRM系统的测试账号？\", \"answer\": \"联系产品部张三（EMP001），提交工单至 Jira 系统，选择'CRM-账号申请'类型，填写用途说明，审批通过后自动开通测试账号。通常需要1-2个工作日。\", \"category\": \"账号权限\"}",
     "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#2": "{\"entity_type\": \"FAQ\", \"question\": \"CRM系统的API文档在哪里？\", \"answer\": \"API文档发布在 Confluence 的'CRM系统API手册'空间，路径为：Confluence > 技术文档 > CRM系统 > API手册。当前最新版本为 v3.2，包含 REST API 和 GraphQL 两种接口。\", \"category\": \"技术文档\"}",
     "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#3": "{\"entity_type\": \"FAQ\", \"question\": \"支付平台支持哪些支付方式？\", \"answer\": \"支付平台（v2.5）支持以下支付方式：微信支付（扫码/小程序/H5）、支付宝（扫码/生活号）、银联云闪付、银行卡快捷支付、Apple Pay。企业支付和跨境支付功能在规划中。\", \"category\": \"产品功能\"}",
@@ -31,58 +18,6 @@
     "data/documents/organization.md": "# 组织架构与人员管理\n\n## 公司组织架构\n\n公司采用三级组织架构：\n- L1: 技术中心（CTO 负责）\n- L2: 研发部、产品部、运维部\n- L3: 各组/团队\n\n## 部门详情\n\n### 产品部\n- 负责人：陈七（EMP005）\n- 上级部门：技术中心\n- 职责：产品规划、需求分析、用户研究\n\n### 研发部\n- 负责人：李四（EMP002）\n- 上级部门：技术中心\n- 职责：系统开发、技术架构、代码质量\n\n### 运维部\n- 负责人：周八（EMP006）\n- 上级部门：技术中心\n- 职责：系统运维、监控告警、故障处理\n\n## 使用的系统工具\n\n各部门共同使用以下系统：\n- Jira：项目管理与任务跟踪\n- Confluence：知识库与文档管理\n- GitLab：代码托管与CI/CD\n- 飞书：即时通讯与会议\n"
   },
   "metadata": {
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#1": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#2": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#3": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#4": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv#5": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/documents.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#1": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#2": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#3": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#4": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#5": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#6": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#7": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
-    "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv#8": {
-      "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/employees.csv",
-      "type": "csv"
-    },
     "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json#1": {
       "file": "/Users/marin/PycharmProjects/ontology_skill/data/structured/faqs.json",
       "type": "json",
@@ -248,8 +183,11 @@
         "该系统由产品部",
         "规划",
         "研发部",
+        "CRM系统",
         "于以下基础设施",
         "遵循",
+        "哪里",
+        "文档发布",
         "哪些外部服务"
       ]
     },

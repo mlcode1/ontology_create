@@ -62,8 +62,8 @@ class IngestionPipeline:
             ontology, llm_func=llm_func, llm_registry=llm_registry
         )
 
-        # 自动本体发现器
-        self.discovery = AutoOntologyDiscovery()
+        # 自动本体发现器（从 ontology 读取关键词配置）
+        self.discovery = AutoOntologyDiscovery(ontology)
 
         self._ingested_files: List[str] = []
 

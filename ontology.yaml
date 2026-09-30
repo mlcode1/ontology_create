@@ -1,11 +1,16 @@
 # ============================================================
 # 企业知识本体定义 (Enterprise Knowledge Ontology)
 # ============================================================
-# 本体是知识库的"骨架"，定义了：
+# 本体是知识库的"骨架"和**唯一配置源**，定义了：
 #   1. 实体类型 — 知识库中存在哪些种类的"事物"
 #   2. 关系类型 — 实体之间可以有哪些关联
 #   3. 属性约束 — 每类实体有哪些属性、类型是什么
-# 查询时，引擎会利用本体约束来消除歧义、提升准确率。
+#   4. 抽取/查询元数据 — keywords, query_keywords, chinese_predicate 等
+#   5. 表头模板 — Markdown 表格解析的语义映射
+#   6. 全局配置 — 停用词、章节关键词等
+#
+# 新增领域方向只需编辑本文件，无需修改代码。
+# default_ontology.py 和 auto_ontology.py 均从本文件读取配置。
 # ============================================================
 
 # ---- 实体类型定义 ----
@@ -19,6 +24,9 @@ entity_types:
       description: { type: string, required: false }
       status: { type: enum, values: [planning, development, released, deprecated], required: false }
       owner: { type: string, required: false }
+    keywords: ["系统", "平台", "引擎", "模块", "子系统", "应用", "服务",
+               "产品", "网关", "中控", "助手", "产品", "product", "platform"]
+    query_keywords: ["产品", "系统", "平台", "product", "模块"]
 
   Department:
     description: "部门或团队"
@@ -27,6 +35,9 @@ entity_types:
       level: { type: enum, values: [L1, L2, L3], required: false }
       parent: { type: string, required: false }
       head: { type: string, required: false }
+    keywords: ["部门", "团队", "组", "中心", "部", "室", "院",
+               "department", "team"]
+    query_keywords: ["部门", "团队", "组", "中心", "department"]
 
   Person:
     description: "人员"
@@ -35,6 +46,9 @@ entity_types:
       employee_id: { type: string, required: false, unique: true }
       title: { type: string, required: false }
       department: { type: string, required: false }
+    keywords: ["负责人", "主管", "经理", "工程师", "总监", "组长",
+               "人员", "person"]
+    query_keywords: ["谁", "人员", "人", "负责人", "person"]
 
   Process:
     description: "业务流程或制度"
@@ -43,6 +57,8 @@ entity_types:
       category: { type: enum, values: [approval, operation, compliance, development], required: false }
       description: { type: string, required: false }
       version: { type: string, required: false }
+    keywords: ["流程", "制度", "规范", "标准", "procedure", "process"]
+    query_keywords: ["流程", "制度", "规范", "process"]
 
   Document:
     description: "文档或知识条目"
@@ -52,6 +68,8 @@ entity_types:
       source_file: { type: string, required: false }
       content: { type: text, required: true }
       summary: { type: string, required: false }
+    keywords: ["文档", "手册", "指南", "说明", "报告", "document", "manual"]
+    query_keywords: ["文档", "说明", "手册", "document"]
 
   FAQ:
     description: "常见问题条目"
@@ -59,6 +77,8 @@ entity_types:
       question: { type: string, required: true }
       answer: { type: text, required: true }
       category: { type: string, required: false }
+    keywords: ["问题", "faq", "怎么", "如何", "为什么", "能否"]
+    query_keywords: ["问题", "faq", "常见问题", "怎么", "如何"]
 
   System:
     description: "IT系统或工具平台"
@@ -67,96 +87,327 @@ entity_types:
       type: { type: enum, values: [internal, external, saas], required: false }
       description: { type: string, required: false }
       url: { type: string, required: false }
+    keywords: ["redis", "mqtt", "kubernetes", "gitlab", "hadoop", "tensorflow",
+               "pytorch", "opencv", "echarts", "react", "keil", "spark",
+               "集群", "中间件", "服务器", "数据库", "框架", "库",
+               "系统", "工具", "框架"]
+    query_keywords: ["系统", "工具", "平台", "system"]
+
+  Project:
+    description: "项目或计划"
+    attributes:
+      name: { type: string, required: true }
+    keywords: ["项目", "计划", "project"]
+    query_keywords: ["项目", "计划", "project"]
+
+  Event:
+    description: "事件或会议"
+    attributes:
+      name: { type: string, required: true }
+    keywords: ["事件", "会议", "变更", "event"]
+    query_keywords: ["事件", "会议", "变更", "event"]
+
+  Metric:
+    description: "指标"
+    attributes:
+      name: { type: string, required: true }
+    keywords: ["指标", "kpi", "sla", "metric"]
+    query_keywords: ["指标", "kpi", "sla", "metric"]
 
 # ---- 关系类型定义 ----
 relation_types:
 
   manages:
     description: "管理/负责"
-    domain: Person
-    range: Product
+    domain: [Person, Department]
+    range: [Product, Department]
     inverse: managed_by
+    keywords: ["管理", "负责", "主管", "责任人", "负责人", "带领"]
+    query_keywords: ["管理", "负责", "主管", "责任人", "负责人"]
+    chinese_predicate: "管理"
+    chinese_connector: "的是"
 
   managed_by:
     description: "被管理"
-    domain: Product
-    range: Person
+    domain: [Product, Department]
+    range: [Person, Department]
     inverse: manages
+    keywords: []
+    query_keywords: ["被管理", "管理者是谁"]
+    chinese_predicate: "被管理"
+    chinese_connector: "由"
 
   belongs_to:
     description: "隶属于"
     domain: [Person, Department]
     range: Department
     inverse: contains
+    keywords: ["属于", "隶属", "归属", "隶属于"]
+    query_keywords: ["属于", "隶属", "哪个部门"]
+    chinese_predicate: "属于"
+    chinese_connector: ""
 
   contains:
     description: "包含"
     domain: Department
     range: [Person, Department]
     inverse: belongs_to
+    keywords: ["包含", "包括", "涵盖"]
+    query_keywords: ["包含", "包括", "有哪些"]
+    chinese_predicate: "包含"
+    chinese_connector: ""
 
   develops:
     description: "开发/维护"
     domain: [Department, Person]
     range: Product
     inverse: developed_by
+    keywords: ["开发", "维护", "研发", "实现"]
+    query_keywords: ["开发", "维护", "研发"]
+    chinese_predicate: "开发"
+    chinese_connector: "的是"
 
   developed_by:
     description: "由...开发"
     domain: Product
     range: [Department, Person]
     inverse: develops
+    keywords: []
+    query_keywords: ["谁开发", "开发方"]
+    chinese_predicate: "由"
+    chinese_connector: "开发"
 
   depends_on:
     description: "依赖于"
     domain: [Product, System]
     range: [Product, System]
     inverse: depended_by
+    keywords: ["依赖", "基于", "依靠", "需要"]
+    query_keywords: ["依赖", "基于", "需要"]
+    chinese_predicate: "依赖"
+    chinese_connector: "的是"
 
   depended_by:
     description: "被依赖"
     domain: [Product, System]
     range: [Product, System]
     inverse: depends_on
+    keywords: []
+    query_keywords: ["被谁依赖"]
+    chinese_predicate: "被"
+    chinese_connector: "依赖"
 
   documented_in:
     description: "记录于"
     domain: [Product, Process, System]
     range: Document
     inverse: documents
+    keywords: ["记录", "描述", "说明", "详见"]
+    query_keywords: ["文档", "说明", "记录在"]
+    chinese_predicate: "记录在"
+    chinese_connector: ""
 
   documents:
     description: "描述了"
     domain: Document
     range: [Product, Process, System]
     inverse: documented_in
+    keywords: ["记录", "描述", "说明", "详见"]
+    query_keywords: ["描述了哪些"]
+    chinese_predicate: "描述了"
+    chinese_connector: ""
+
+  uses:
+    description: "使用"
+    domain: [Department, Person, Product, Process]
+    range: [System, Product]
+    inverse: used_by
+    keywords: ["使用", "采用", "利用"]
+    query_keywords: ["使用", "采用"]
+    chinese_predicate: "使用"
+    chinese_connector: ""
+
+  used_by:
+    description: "被使用"
+    domain: [System, Product]
+    range: [Department, Person, Product, Process]
+    inverse: uses
+    keywords: []
+    query_keywords: ["被谁使用"]
+    chinese_predicate: "被"
+    chinese_connector: "使用"
 
   answers:
     description: "解答"
     domain: FAQ
     range: [Product, Process, System]
     inverse: answered_by
+    keywords: ["解答", "回答"]
+    query_keywords: ["解答", "回答", "怎么", "如何"]
+    chinese_predicate: "解答"
+    chinese_connector: ""
 
   answered_by:
     description: "被解答于"
     domain: [Product, Process, System]
     range: FAQ
     inverse: answers
+    keywords: []
+    query_keywords: ["有哪些问题"]
+    chinese_predicate: "的FAQ在"
+    chinese_connector: ""
 
-  uses:
-    description: "使用"
-    domain: [Department, Person, Process]
-    range: [System, Product]
-    inverse: used_by
+  reports_to:
+    description: "汇报给"
+    domain: Person
+    range: Person
+    keywords: ["汇报", "报告"]
+    query_keywords: ["汇报", "报告"]
+    chinese_predicate: "汇报给"
+    chinese_connector: ""
 
-  used_by:
-    description: "被使用"
-    domain: [System, Product]
-    range: [Department, Person, Process]
-    inverse: uses
+  collaborates_with:
+    description: "协作"
+    domain: [Person, Department]
+    range: [Person, Department]
+    keywords: ["协作", "配合", "协同"]
+    query_keywords: ["协作", "配合", "协同"]
+    chinese_predicate: "协作"
+    chinese_connector: "与"
+
+  located_in:
+    description: "位于"
+    domain: [Department, Person]
+    range: Entity
+    keywords: ["位于", "在"]
+    query_keywords: ["位于", "在哪里"]
+    chinese_predicate: "位于"
+    chinese_connector: ""
+
+  created_by:
+    description: "创建/发起"
+    domain: [Project, Event, Document]
+    range: Person
+    keywords: ["创建", "发起", "提出"]
+    query_keywords: ["谁创建", "发起人"]
+    chinese_predicate: "由"
+    chinese_connector: "创建"
+
+  assigned_to:
+    description: "分配/指派"
+    domain: [Project, Event]
+    range: [Person, Department]
+    keywords: ["分配", "指派", "安排"]
+    query_keywords: ["分配给", "指派"]
+    chinese_predicate: "分配给"
+    chinese_connector: ""
 
   related_to:
     description: "相关"
     domain: any
     range: any
-    inverse: related_to
+    keywords: ["相关", "关联"]
+    query_keywords: ["相关", "关联"]
+    chinese_predicate: "相关"
+    chinese_connector: "与"
+
+  # ---- 元数据关系（表模板解析用） ----
+
+  has_type:
+    description: "字段类型"
+    domain: Entity
+    range: Entity
+
+  has_attribute:
+    description: "属性"
+    domain: Entity
+    range: Entity
+
+  has_value:
+    description: "配置值"
+    domain: Entity
+    range: Entity
+
+  described_as:
+    description: "描述/说明"
+    domain: Entity
+    range: Entity
+
+# ---- 表头模板 ----
+# 用于 Markdown 表格解析：根据表头关键词匹配语义，自动推断实体和关系
+table_templates:
+  - headers: ["模块", "人员"]
+    column_types: ["Product", "Person"]
+    relation_type: manages
+  - headers: ["产品", "服务", "数据库"]
+    column_types: ["Product", "System", "System"]
+    relation_type: depends_on
+  - headers: ["产品", "服务"]
+    column_types: ["Product", "System"]
+    relation_type: depends_on
+  - headers: ["组件", "人员"]
+    column_types: ["Product", "Person"]
+    relation_type: manages
+  - headers: ["功能", "负责人"]
+    column_types: ["Product", "Person"]
+    relation_type: manages
+  - headers: ["模块", "负责人"]
+    column_types: ["Product", "Person"]
+    relation_type: manages
+  - headers: ["产品", "负责人"]
+    column_types: ["Product", "Person"]
+    relation_type: manages
+  - headers: ["系统", "人员"]
+    column_types: ["System", "Person"]
+    relation_type: manages
+  - headers: ["系统", "依赖"]
+    column_types: ["System", "System"]
+    relation_type: depends_on
+  - headers: ["名称", "值"]
+    column_types: ["Entity", "attribute"]
+    relation_type: has_attribute
+  - headers: ["字段", "类型"]
+    column_types: ["Entity", "attribute"]
+    relation_type: has_type
+  - headers: ["字段", "类型", "描述"]
+    column_types: ["Entity", "attribute", "attribute"]
+    relation_type: has_type
+  - headers: ["配置项", "说明"]
+    column_types: ["Entity", "attribute"]
+    relation_type: described_as
+  - headers: ["配置项", "值"]
+    column_types: ["Entity", "attribute"]
+    relation_type: has_value
+  - headers: ["参数", "类型", "说明"]
+    column_types: ["Entity", "attribute", "attribute"]
+    relation_type: has_type
+  - headers: ["名称", "类型"]
+    column_types: ["Entity", "attribute"]
+    relation_type: has_type
+
+# ---- 全局抽取/查询元数据 ----
+
+# 章节标题关键词（用于识别文档分区，如 "在研产品" / "维护系统"）
+section_keywords: ["在研", "维护"]
+
+# 抽取停用词（匹配到这些词时不视为实体名）
+extraction_stopwords:
+  - "属于"
+  - "管理"
+  - "负责"
+  - "开发"
+  - "维护"
+  - "使用"
+  - "依赖"
+  - "优先"
+  - "全自动"
+  - "半自动"
+  - "如果不行再选下一个方案"
+  - "方案"
+  - "规避"
+  - "临时"
+  - "通用"
+  - "手动"
+
+# 人员列标记关键词（用于表格中识别哪一列是人员）
+person_cell_keywords: ["人员", "负责人"]

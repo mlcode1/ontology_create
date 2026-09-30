@@ -12,6 +12,10 @@
   - 直接使用（自动模式）
   - 导出为 YAML 供人工微调（渐进模式）
   - 与已有本体合并（增量模式）
+
+关键词来源:
+  - 优先从传入的 Ontology 对象读取 keywords（即 ontology.yaml 中定义的内容）
+  - 未传入 Ontology 时使用最小化兜底关键词
 """
 
 from __future__ import annotations
@@ -42,6 +46,19 @@ class DiscoveredRelation:
     samples: List[Tuple[str, str]] = field(default_factory=list)
 
 
+# 最小化兜底关键词（仅在未传入 Ontology 时使用）
+_MINIMAL_TYPE_KEYWORDS = {
+    "Product": ["产品", "系统", "平台"],
+    "Person": ["人员", "负责人", "主管"],
+    "Department": ["部门", "团队"],
+}
+
+_MINIMAL_RELATION_VERBS = {
+    "manages": ["管理", "负责"],
+    "belongs_to": ["属于", "隶属"],
+}
+
+
 class AutoOntologyDiscovery:
     """自动本体发现器"""
 
@@ -50,58 +67,28 @@ class AutoOntologyDiscovery:
         自动本体发现器。
 
         参数:
-          ontology: 可选的已有 Ontology 对象。若提供，则从其读取
-                    entity/relation keywords 作为推断依据；否则使用内置默认。
+          ontology: Ontology 对象。关键词全部从 ontology.yaml 读取。
+                    若未传入，使用最小化兜底关键词。
         """
         self.discovered_entities: Dict[str, DiscoveredType] = {}
         self.discovered_relations: Dict[str, DiscoveredRelation] = {}
 
-        # 内置默认关键词（当未传入 ontology 或 ontology 中缺失时使用）
-        _builtin_type_keywords = {
-            "Product": ["产品", "平台", "系统", "引擎", "服务", "应用", "product", "platform"],
-            "Department": ["部门", "团队", "组", "中心", "部", "室", "department", "team"],
-            "Person": ["人员", "负责人", "主管", "工程师", "经理", "person", "谁"],
-            "Process": ["流程", "制度", "规范", "流程", "procedure", "process"],
-            "Document": ["文档", "手册", "说明", "报告", "指南", "document", "manual"],
-            "System": ["系统", "工具", "框架", "数据库", "kubernetes", "gitlab", "hadoop"],
-            "FAQ": ["问题", "faq", "怎么", "如何", "为什么", "能否"],
-            "Project": ["项目", "计划", "project"],
-            "Event": ["事件", "会议", "变更", "event"],
-            "Metric": ["指标", "kpi", "sla", "metric"],
-        }
-        _builtin_relation_verbs = {
-            "manages": ["管理", "负责", "主管", "带领"],
-            "belongs_to": ["属于", "隶属", "归属", "隶属于"],
-            "develops": ["开发", "维护", "研发", "实现"],
-            "depends_on": ["依赖", "基于", "依靠", "需要"],
-            "uses": ["使用", "采用", "利用"],
-            "documents": ["记录", "描述", "说明", "详见"],
-            "collaborates_with": ["协作", "配合", "协同"],
-            "reports_to": ["汇报", "报告"],
-            "located_in": ["位于", "在"],
-            "created_by": ["创建", "发起", "提出"],
-            "assigned_to": ["分配", "指派", "安排"],
-            "contains": ["包含", "包括", "涵盖"],
-        }
-
-        # 从已有本体读取关键词（若有），与内置默认合并
+        # 从 Ontology 对象读取关键词（ontology.yaml 是唯一来源）
         if ontology is not None:
-            ont_entity_kws = {
+            self._type_keywords = {
                 name: et.keywords
                 for name, et in ontology.entity_types.items()
                 if et.keywords
             }
-            ont_relation_kws = {
+            self._relation_verbs = {
                 name: rt.keywords
                 for name, rt in ontology.relation_types.items()
                 if rt.keywords
             }
-            # 合并：本体优先，内置兜底
-            self._type_keywords = {**_builtin_type_keywords, **ont_entity_kws}
-            self._relation_verbs = {**_builtin_relation_verbs, **ont_relation_kws}
         else:
-            self._type_keywords = _builtin_type_keywords
-            self._relation_verbs = _builtin_relation_verbs
+            # 最小化兜底（实际使用中应该始终传入 ontology）
+            self._type_keywords = dict(_MINIMAL_TYPE_KEYWORDS)
+            self._relation_verbs = dict(_MINIMAL_RELATION_VERBS)
 
     def discover_from_structured(self, data: Any, source: str = ""):
         """从结构化数据(JSON/CSV行)中发现实体类型"""
